@@ -1,4 +1,4 @@
-package com.sasken.com;
+package com.sasken.test;
 
 public interface IGmailCUJ {
     void openGmailApp();

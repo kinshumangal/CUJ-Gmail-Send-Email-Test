@@ -1,8 +1,7 @@
-package com.sasken.com;
+package com.sasken.test;
 
 import android.os.SystemClock;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.uiautomator.By;
@@ -17,7 +16,12 @@ public class GmailCUJImpl implements IGmailCUJ {
 
     private static final String TAG = "GmailCUJImpl";
     private UiDevice mUiDevice;
+    public static final String APP_NAME = "Gmail";
     public static final String UI_PACKAGE = "com.google.android.gm";
+    public static final String UI_COMPOSE = "Compose";
+    public static final String UI_TO_FIELD= "peoplekit_autocomplete_chip_group";
+    public static final String UI_SUBJECT = "subject";
+    public static final String UI_COMPOSE_EMAIL= "Compose email";
     private static final long SHORT_TIMEOUT = 3000;
 
     /**
@@ -31,17 +35,17 @@ public class GmailCUJImpl implements IGmailCUJ {
         final String launcherPackage = mUiDevice.getLauncherPackageName();
         mUiDevice.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)),
                 SHORT_TIMEOUT);
-        safeClick(By.desc("Gmail"), SHORT_TIMEOUT);
+        safeClick(By.desc(APP_NAME), SHORT_TIMEOUT);
     }
 
     @Override
     public void clickComposeIcon(){
-        safeClick(By.text("Compose"), SHORT_TIMEOUT);
+        safeClick(By.text(UI_COMPOSE), SHORT_TIMEOUT);
     }
 
     @Override
     public void addEmailAddress(String address) {
-        UiObject2 toAddress = mUiDevice.wait(Until.findObject(By.res(UI_PACKAGE, "peoplekit_autocomplete_chip_group")), SHORT_TIMEOUT);
+        UiObject2 toAddress = mUiDevice.wait(Until.findObject(By.res(UI_PACKAGE, UI_TO_FIELD)), SHORT_TIMEOUT);
         List<UiObject2> child = toAddress.getChildren();
         UiObject2 toEditText = child.get(0);
         toEditText.setText(address);
@@ -51,7 +55,7 @@ public class GmailCUJImpl implements IGmailCUJ {
 
     @Override
     public void setEmailSubject(String subject) {
-        UiObject2 toEditText = mUiDevice.wait(Until.findObject(By.res(UI_PACKAGE, "subject")), SHORT_TIMEOUT);
+        UiObject2 toEditText = mUiDevice.wait(Until.findObject(By.res(UI_PACKAGE, UI_SUBJECT)), SHORT_TIMEOUT);
         toEditText.setText(subject);
         SystemClock.sleep(SHORT_TIMEOUT);
         mUiDevice.pressEnter();
@@ -59,7 +63,7 @@ public class GmailCUJImpl implements IGmailCUJ {
 
     @Override
     public void setEmailBody(String body) {
-        UiObject2 toEditText = mUiDevice.wait(Until.findObject(By.text("Compose email")), SHORT_TIMEOUT);
+        UiObject2 toEditText = mUiDevice.wait(Until.findObject(By.text(UI_COMPOSE_EMAIL)), SHORT_TIMEOUT);
         toEditText.setText(body);
         SystemClock.sleep(SHORT_TIMEOUT);
         mUiDevice.pressEnter();

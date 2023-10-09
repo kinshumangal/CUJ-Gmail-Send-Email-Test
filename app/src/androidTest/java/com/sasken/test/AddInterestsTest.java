@@ -1,4 +1,4 @@
-package com.sasken.com;
+package com.sasken.test;
 
 import androidx.test.uiautomator.UiObjectNotFoundException;
 

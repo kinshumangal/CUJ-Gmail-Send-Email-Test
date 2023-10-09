@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.sasken.com"
+    namespace = "com.sasken.test"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.sasken.com"
+        applicationId = "com.sasken.test"
         minSdk = 24
         targetSdk = 33
         versionCode = 1

@@ -1,4 +1,4 @@
-package com.sasken.com;
+package com.sasken.test;
 
 import org.junit.Test;
 
