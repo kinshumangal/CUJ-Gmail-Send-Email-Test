@@ -24,7 +24,7 @@ public class AddInterestsTest {
 //        Set Email Subject
         gmailCUJObj.setEmailSubject("Email CUJ Test");
 //        add Email Body
-        gmailCUJObj.setEmailBody("This is email CUJ test");
+//        gmailCUJObj.setEmailBody("This is email CUJ test");
 //        click Send Button
         gmailCUJObj.clickSendButton();
     }

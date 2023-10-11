@@ -22,6 +22,7 @@ public class GmailCUJImpl implements IGmailCUJ {
     public static final String UI_TO_FIELD= "peoplekit_autocomplete_chip_group";
     public static final String UI_SUBJECT = "subject";
     public static final String UI_COMPOSE_EMAIL= "Compose email";
+    public static final String UI_NEW_MEETING = "new_meeting";
     private static final long SHORT_TIMEOUT = 3000;
 
     /**
@@ -36,6 +37,8 @@ public class GmailCUJImpl implements IGmailCUJ {
         mUiDevice.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)),
                 SHORT_TIMEOUT);
         safeClick(By.desc(APP_NAME), SHORT_TIMEOUT);
+
+        checkIsInMeet();
     }
 
     @Override
@@ -95,6 +98,17 @@ public class GmailCUJImpl implements IGmailCUJ {
         }
         Log.d(TAG, "safeClick: "+"openThreeDotsTab: false"+selector.toString());
         return false;
+    }
+
+    private void checkIsInMeet() {
+        if (mUiDevice.wait(Until.hasObject(
+                By.res(UI_PACKAGE, UI_NEW_MEETING)),
+                SHORT_TIMEOUT)){
+            Log.d(TAG, "checkIsInMeet: It is in meet page");
+            safeClick(By.desc("Mail"), SHORT_TIMEOUT);
+            Log.d(TAG, "checkIsInMeet: Change to Mail");
+        }
+
     }
 
 }
