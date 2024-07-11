@@ -37,7 +37,6 @@ public class GmailCUJImpl implements IGmailCUJ {
         mUiDevice.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)),
                 SHORT_TIMEOUT);
         safeClick(By.desc(APP_NAME), SHORT_TIMEOUT);
-
         checkIsInMeet();
     }
 
@@ -77,7 +76,6 @@ public class GmailCUJImpl implements IGmailCUJ {
         safeClick(By.res(UI_PACKAGE, "send"), SHORT_TIMEOUT);
         Log.d(TAG, "clickSendButton: Email sent successfully");
         SystemClock.sleep(SHORT_TIMEOUT);
-
     }
 
     @Override
@@ -86,7 +84,6 @@ public class GmailCUJImpl implements IGmailCUJ {
             mUiDevice.pressBack();
         }
     }
-
 
     private boolean safeClick(BySelector selector, long timeout){
         UiObject2 dev = mUiDevice.wait(Until.findObject(selector), timeout);
@@ -108,7 +105,5 @@ public class GmailCUJImpl implements IGmailCUJ {
             safeClick(By.desc("Mail"), SHORT_TIMEOUT);
             Log.d(TAG, "checkIsInMeet: Change to Mail");
         }
-
     }
-
 }
