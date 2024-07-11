@@ -8,6 +8,4 @@ public interface IGmailCUJ {
     void setEmailSubject(String subject);
     void setEmailBody(String body);
     void clickSendButton();
-
-
 }
