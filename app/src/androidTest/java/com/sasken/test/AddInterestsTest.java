@@ -17,15 +17,15 @@ public class AddInterestsTest {
     @Test
     public void emailSendTest () throws UiObjectNotFoundException, IllegalAccessException {
 
-//        Click on "Compose"
+        // Click on "Compose"
         gmailCUJObj.clickComposeIcon();
-//        Add Email address
+        // Add Email address
         gmailCUJObj.addEmailAddress("enlighterk@gmail.com");
-//        Set Email Subject
+        // Set Email Subject
         gmailCUJObj.setEmailSubject("Email CUJ Test");
-//        add Email Body
-//        gmailCUJObj.setEmailBody("This is email CUJ test");
-//        click Send Button
+        // add Email Body
+        // gmailCUJObj.setEmailBody("This is email CUJ test");
+        // click Send Button
         gmailCUJObj.clickSendButton();
     }
 
